@@ -11,7 +11,7 @@ class Post extends Model
 {
     use SoftDeletes;
     
-    protected $fillable = ['titulo', 'contenido', 'categoria_id', 'publicado', 'user_id'];
+    protected $fillable = ['titulo', 'contenido', 'categoria_id', 'publicado', 'user_id', 'resumen'];
 
         public function categoria()
         {
@@ -39,7 +39,7 @@ class Post extends Model
         {
             return $this->belongsToMany(Etiqueta::class);
         }
-        protected function resumen(): Attribute
+        protected function resumenAuto(): Attribute
         {
             return Attribute::get(
                 fn () => Str::limit($this->contenido, 90)

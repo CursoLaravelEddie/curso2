@@ -16,6 +16,16 @@ class PostPolicy
         return null;
     }
 
+    public function viewAny(User $user): bool
+    {
+        return true;
+    }
+
+    public function view(User $user, Post $post): bool
+    {
+        return true;
+    }
+
     public function create(User $user): bool
     {
         return in_array($user->rol, ['admin', 'editor']);
@@ -29,5 +39,10 @@ class PostPolicy
     public function delete(User $user, Post $post): bool
     {
         return $user->id === $post->user_id;
+    }
+
+    public function deleteAny(User $user): bool
+    {
+        return false;
     }
 }
