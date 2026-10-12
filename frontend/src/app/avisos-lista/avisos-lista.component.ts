@@ -12,7 +12,7 @@ import { SesionService } from '../servicios/sesion.service';
 })
 export class AvisosListaComponent implements OnInit {
   avisos: Aviso[] = [];
-  cargando: boolean = "si";
+  cargando = true;
   error = '';
   mensaje = '';
   mensajeOk = false;
